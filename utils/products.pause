@@ -1,0 +1,22 @@
+
+
+
+/* module.exports = [
+    products = [],
+    addProduct = product => {
+        products.push( products );
+    }
+]; */
+const products = [
+    {title: "Conjuntos"},
+    {title: "Conjuntos"},
+],
+    addProduct = product => {
+        products.push( products );
+    };
+
+
+module.exports = {
+    products,
+    addProduct
+};
