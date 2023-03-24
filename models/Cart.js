@@ -17,10 +17,10 @@ exports.addProduct2Cart = ( productId, productPrice ) => {
         let updatedProduct;
 
         if( existingProductIndex != -1 ) {
-            updatedProduct = [ ...cart.products[ existingProductIndex ] ];
+            updatedProduct = { ...cart.products[ existingProductIndex ] };
             updatedProduct.quantity += 1;
             cart.products = [ ...cart.products ];
-            cart.products = [ existingProductIndex ] = updatedProduct;
+            cart.products[ existingProductIndex ] = updatedProduct;
         } else {
             updatedProduct = { id: productId, quantity: 1 };
             cart.products = [ ...cart.products, updatedProduct ];
