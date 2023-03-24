@@ -1,6 +1,6 @@
 
 
-const { saveProduct } = require("../models/Products");
+const { saveProduct, fetchAllProducts } = require("../models/Products");
 
 
 exports.getAddProductPage = ( req, res ) => {
@@ -23,3 +23,14 @@ exports.postAddProductPage = ( req, res ) => {
     saveProduct( product );
     res.redirect( "/" );
 };
+
+exports.getAdminProductsPage = ( req, res ) => {
+    fetchAllProducts( products => {
+        const viewsData = {
+            admin: true,
+            pageTitle: "Admin Products",
+            products
+        };
+        res.render( "product-list", viewsData );
+    } );
+}
