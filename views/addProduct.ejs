@@ -7,29 +7,34 @@
   <body>
     <%- include( "./includes/appbar" ) %>
     <main>
-        <h2>Add Product</h2>
+        <h2><%= edit ? "Edit Products" : "Add Product" %></h2>
         <form method="POST" action="/products/add">
             <p>
                 <label>Title
-                    <input type="text" class="form-control" name="title">
+                    <input type="text" class="form-control" name="title"
+                    value="<%= edit ? product.title : '' %>">
                 </label>
             </p>
             <p>
                 <label>Image Url
-                    <input type="text" class="form-control" name="image">
+                    <input type="text" class="form-control" name="image"
+                    value="<%= edit ? product.image : '' %>">
                 </label>
             </p>
             <p>
                 <label>Price
-                    <input type="number" step="any" class="form-control" name="price">
+                    <input type="number" step="any" class="form-control" name="price"
+                    value="<%= edit ? product.price : '' %>">
                 </label>
             </p>
             <p>
                 <label>Description
-                    <textarea cols="30" rows="10" class="form-control" name="description"></textarea>
+                    <textarea cols="30" rows="10" class="form-control" name="description">
+                    <%= edit ? product.description : '' %>
+                    </textarea>
                 </label>
             </p>
-            <p><button>Add Product</button></p>
+            <p><button><%= edit ? 'Edit Product' : 'Add Product' %></button></p>
         </form>
         addProduct
     </main>
