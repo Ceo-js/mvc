@@ -8,7 +8,10 @@
     <%- include( "./includes/appbar" ) %>
     <main>
         <h2><%= edit ? "Edit Products" : "Add Product" %></h2>
-        <form method="POST" action="/products/add">
+        <form method="POST" action="<%= edit ? '/products/edit' : '/products/add' %>">
+            <% if( edit ) { %>
+                <input type="hidden" name="productId" value="<%= product.id %>">
+            <% } %>
             <p>
                 <label>Title
                     <input type="text" class="form-control" name="title"

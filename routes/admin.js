@@ -7,7 +7,8 @@ const express = require('express'),
     { getAddProductPage,
         postAddProductPage,
         getAdminProductsPage, 
-        getEditProductPage } = require( "../controllers/ProductsController" );
+        getEditProductPage, 
+        postEditProductPage } = require( "../controllers/ProductsController" );
 
 /* GET home page. */
 // router.get('/', function(req, res, next) {
@@ -18,5 +19,6 @@ router.get( "/", getAdminProductsPage );
 router.get( "/add", getAddProductPage );
 router.post( "/add", postAddProductPage );
 router.get( "/edit/:productId", getEditProductPage );
+router.post( "/edit", postEditProductPage );
 
 module.exports = router;

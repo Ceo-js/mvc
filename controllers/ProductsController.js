@@ -1,6 +1,9 @@
 
 
-const { saveProduct, fetchAllProducts, getProductById } = require("../models/Products");
+const { saveProduct,
+    fetchAllProducts, 
+    getProductById, 
+    updateProductIdById } = require("../models/Products");
 
 
 exports.getAddProductPage = ( req, res ) => {
@@ -46,4 +49,17 @@ exports.getEditProductPage = ( req, res ) => {
         };
         res.render( "addProduct", viewsData );
     } );
+};
+
+exports.postEditProductPage = ( req, res ) => {
+    // console.log( req.body );
+    const product = {
+        id: req.body.productId,
+        title: req.body.title,
+        price: req.body.price,
+        image: req.body.image,
+        description: req.body.description
+    };
+    updateProductIdById( product, req.body.productId );
+    res.redirect( "/products" );
 };
