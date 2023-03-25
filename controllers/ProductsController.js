@@ -44,6 +44,6 @@ exports.getEditProductPage = ( req, res ) => {
             product,
             pageTitle: "Edit Product"
         };
+        res.render( "addProduct", viewsData );
     } );
-    res.render( "addProduct", viewsData );
 };

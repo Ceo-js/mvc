@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('leela:server');
 var http = require('http');
+const { exec } = require( "node:child_process" );
 
 /**
  * Get port from environment and store in Express.
@@ -88,10 +89,34 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 
-  console.log( `
-  
-  
+//   exec( "clear", ( error, out ) => {
+//       if( error ) { console.log( error ); }
+//       console.log( out );
+//       console.log( `
+
+      
+// =====================
+//     http://localhost:${port}
+// =====================` );
+//   } );
+    console.clear();
+    const dogs = [ { name: "Ceo", age: 37 },
+                    { name: "Lyh", age: 27 } ];
+       
+    dogs.forEach( ( dog ) => {
+        console.group( `${dog.name}` );
+        console.log( `This is ${dog.name}` );
+        console.log( `${dog.name} is ${dog.age} years old` );
+        console.log( `${dog.name} is ${dog.age * 7} dog years old` );
+        console.groupEnd( `${dog.name}` );
+    } );
+
+    console.clear();
+    console.log( `
+
+      
 =====================
     http://localhost:${port}
 =====================` );
+//   } );
 }
