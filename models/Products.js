@@ -2,7 +2,8 @@
 
 const fs = require( "fs" ),
     path = require( "path" ),
-    rootDir = require( "../utils/path" );
+    rootDir = require( "../utils/path" ),
+    { deleteProductFromCart } = require("./Cart");
 
 
 const getProductsFromFile = handler => {
@@ -59,6 +60,7 @@ exports.deleteProductById = ( productId, handler ) => {
     const productsPath = path.join( rootDir, "../data", "products.json" );
     getProductsFromFile( products => {
         let updatedProducts = products.filter( product => product.id.toString() != productId.toString() );
+        deleteProductFromCart( productId );
         fs.writeFile( productsPath, JSON.stringify( updatedProducts ), error => console.log( error ) );
         handler();
     } );
