@@ -74,7 +74,8 @@ exports.deleteProductFromCart = ( productId ) => {
         let cartProducts = cart.products,
             updatedCartProducts = cartProducts.filter( p => p.id.toString() !== productId.toString() );
             
-        fs.writeFile( cartPath, JSON.stringify( updatedCartProducts ), error => {
+        // fs.writeFile( cartPath, JSON.stringify( updatedCartProducts ), error => {
+        fs.writeFile( cartPath, JSON.stringify( { products: updatedCartProducts } ), error => {
             console.log( error );
         } ); 
     } );

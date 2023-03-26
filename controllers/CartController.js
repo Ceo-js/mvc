@@ -37,7 +37,8 @@ exports.getCartPage = ( req, res ) => {
                 cartProducts: productsData,
                 totalPrice
             };
-            console.log( viewsData );
+            // console.log( viewsData );
+            res.render( "cart", viewsData );
         } );
 
     } );
