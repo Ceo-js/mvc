@@ -1,7 +1,8 @@
 
 
 const { addProduct2Cart,
-    getCartDetailsFromFile } = require("../models/Cart"),
+    getCartDetailsFromFile, 
+    deleteProductFromCart } = require("../models/Cart"),
     { getProductById,
         fetchAllProducts } = require( "../models/Products" );
 
@@ -42,4 +43,9 @@ exports.getCartPage = ( req, res ) => {
         } );
 
     } );
+};
+
+exports.deleteCartItem = ( req, res ) => {
+    const productId = req.body.productId;
+    deleteProductFromCart( productId, () => res.redirect( "/cart" ) );
 };

@@ -26,6 +26,7 @@
             <p>Quantity</p>
             <p>Price per Product</p>
             <p>Total Price</p>
+            <p>Actions</p>
         </div>
         <% for( let product of cartProducts ) { %>
             <card>
@@ -33,6 +34,12 @@
                 <p><%= product.quantity %></p>
                 <p><%= product.price %></p>
                 <p><%= product.cartPrice %></p>
+                <p>
+                    <form action="/cart/delete-item" method="post">
+                        <input type="hidden" name="productId" value="<%= product.id %>">
+                        <button>Delete</button>
+                    </form>
+                </p>
             </card>
         <% } %>
 
