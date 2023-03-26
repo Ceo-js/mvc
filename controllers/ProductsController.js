@@ -3,7 +3,8 @@
 const { saveProduct,
     fetchAllProducts, 
     getProductById, 
-    updateProductIdById } = require("../models/Products");
+    updateProductIdById, 
+    deleteProductById } = require("../models/Products");
 
 
 exports.getAddProductPage = ( req, res ) => {
@@ -62,4 +63,10 @@ exports.postEditProductPage = ( req, res ) => {
     };
     updateProductIdById( product, req.body.productId );
     res.redirect( "/products" );
+};
+
+exports.postDeleteProductPage = ( req, res ) => {
+    // console.log( req.body );
+    const productId = req.body.productId;
+    deleteProductById( productId, () => res.redirect( "/products" ) );
 };

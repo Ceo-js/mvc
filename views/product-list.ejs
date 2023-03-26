@@ -22,6 +22,18 @@
             height: 100px;
             aspect-ratio: 1 / 1;
         }
+        [btn], button {
+            display: grid;
+            place-items: center;
+            margin: 5px;
+            padding: 1rem 1.5rem;
+            border-radius: 9px;
+            background: #905;
+            color: #fff;
+            text-decoration: none;
+            outline: none;
+            border: transparent;
+        }
     </style>
   </head>
   <body>
@@ -40,10 +52,13 @@
                         <p price><%= product.price %></p>
                         <p>
                         <% if( admin ) { %>
-                            <form >
-                                <a href="/products/edit/<%= product.id %>" title="<%= product.id %>" btn>Edit</a>
-                                <a href="/product/details/<%= product.id %>" title="<%= product.id %>" btn>Delete</a>
-                            </form>
+                            <div >
+                                <a btn href="/products/edit/<%= product.id %>" title="<%= product.id %>" btn>Edit</a>
+                                <form action="/products/delete" method="post">
+                                    <input type="hidden" name="productId" value="<%= product.id %>">
+                                    <button>Delete</button>
+                                </form>
+                            </div>
                         <% } else { %>
                             <a href="/product/details/<%= product.id %>" title="<%= product.id %>" btn>Ver Detalhes</a>
                             <%- include( "includes/cartButton", { product: product } ) %>
@@ -66,7 +81,7 @@
             <div>No Products Available</div>
         <% } %> -->
 
-        home
+        <%= admin ? "product-list" : "home" %>
     </main>
   </body>
 </html>
