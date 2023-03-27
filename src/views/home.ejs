@@ -89,21 +89,22 @@
             <header>
                 <title-pk title-pk="Produtos mais procurados" color="var(--cp05)"></title-pk>
             </header>
+            <% if( products.length ) {%>
             <slider-spot>
                 <slider class="swiper" slider-heighlights>
                     <slider-modules class="swiper-wrapper">
-
+                        <% for( let product of products ) { %>
 
                             <slide class="swiper-slide">
                                 <card-pk
-                                    name="Product's name" 
-                                    desc="Lorem ipsum sit amet consectetur elit. Accusamus recusandae, vel. Quae sit non eius ceo!"
-                                    real="99" 
-                                    cents="99"
-                                    src="img/home/ofertas/oferta-01.png" 
+                                    name="<%= product.title %>" 
+                                    desc="<%= product.description %>"
+                                    real="<%= product.price %>" 
+                                    cents="<%= product.cents %>"
+                                    src="<%= product.cover %>" 
                                     alt=""
                                     btn="Ver detalhes"
-                                    url="/produto"
+                                    url="/product/details/<%= product.id %>"
                                 ></card-pk>
                             </slide>
 
@@ -117,6 +118,9 @@
             <center-btn>
                 <button-pk name="Ver mais" color="" width="50%"></button-pk>
             </center-btn>
+            <% } else {%>
+                <div>No Products Available</div>
+            <% } %>
         </article>
 
         

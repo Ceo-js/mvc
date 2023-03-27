@@ -30,7 +30,7 @@ exports.ProductsController = [
             description: req.body.description
         };
         saveProduct( product );
-        res.redirect( "/" );
+        res.redirect( "/products" );
     },
     getAdminProductsPage = ( req, res ) => {
         fetchAllProducts( products => {
