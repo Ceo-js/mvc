@@ -22,6 +22,11 @@
     <script src="js/globals/swiper-bundle.min.js"></script>
     <script src="js/globals/global.js" defer></script>
     <script src="js/home/home.js" defer></script>
+    <style>
+        image[thumb] {
+            width: 140px !important;
+        }
+    </style>
 </head>
 <body>
         
@@ -51,6 +56,9 @@
                         <p>Imagem de capa do card</p>
                         <input type="text" class="form-control" name="cover"
                         value="<%= edit ? product.cover : '' %>">
+                        <% if( edit ) { %>
+                         <img thumb src="<%= product.cover %>" alt="">
+                        <% } %>
                     </label>
                 </p>
                 <p>
@@ -58,6 +66,9 @@
                         <p>Imagem</p>
                         <input type="text" class="form-control" name="image"
                         value="<%= edit ? product.image : '' %>">
+                        <% if( edit ) { %>
+                         <img thumb src="<%= product.image %>" alt="">
+                        <% } %>
                     </label>
                 </p>
                 <p>
@@ -65,6 +76,9 @@
                         <p>Imagem 01</p>
                         <input type="text" class="form-control" name="image01"
                         value="<%= edit ? product.image01 : '' %>">
+                        <% if( edit ) { %>
+                         <img thumb src="<%= product.image01 %>" alt="">
+                        <% } %>
                     </label>
                 </p>
                 <p>
@@ -72,6 +86,9 @@
                         <p>Imagem 02</p>
                         <input type="text" class="form-control" name="image02"
                         value="<%= edit ? product.image02 : '' %>">
+                        <% if( edit ) { %>
+                         <img thumb src="<%= product.image02 %>" alt="">
+                        <% } %>
                     </label>
                 </p>
                 <p>
@@ -79,6 +96,9 @@
                         <p>Imagem 03</p>
                         <input type="text" class="form-control" name="image03"
                         value="<%= edit ? product.image03 : '' %>">
+                        <% if( edit ) { %>
+                         <img thumb src="<%= product.image03 %>" alt="">
+                        <% } %>
                     </label>
                 </p>
                 <section col="2">
