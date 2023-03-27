@@ -23,7 +23,7 @@ exports.CartModel = [
     // ${productPrice}` );
 
         const cartPath = path.join( rootDir, "../data", "cart.json" );
-        this.getCartDetailsFromFile( cart => {
+        getCartDetailsFromFile( cart => {
             // console.log( `\x1b[33moi`,cart.products.findIndex( p => p.id.toString() == "1679646792617") );
             const Cart = { ...cart };
             console.log( `\x1b[33moi`,Cart );
@@ -69,7 +69,7 @@ exports.CartModel = [
     },
     deleteProductFromCart = ( productId, handler = "" ) => {
         const cartPath = path.join( rootDir, "../data", "cart.json" );
-        this.getCartDetailsFromFile( cart => {
+        getCartDetailsFromFile( cart => {
             let cartProducts = cart.products,
                 updatedCartProducts = cartProducts.filter( p => p.id.toString() !== productId.toString() );
                 

@@ -1,45 +1,218 @@
+
+
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="pt-br">
+<head>
     <title><%= pageTitle %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <%- include( "./includes/appbar0" ) %>
-    <main>
-        <h2><%= edit ? "Edit Products" : "Add Product" %></h2>
-        <form method="POST" action="<%= edit ? '/products/edit' : '/products/add' %>">
-            <% if( edit ) { %>
-                <input type="hidden" name="productId" value="<%= product.id %>">
-            <% } %>
-            <p>
-                <label>Title
-                    <input type="text" class="form-control" name="title"
-                    value="<%= edit ? product.title : '' %>">
-                </label>
-            </p>
-            <p>
-                <label>Image Url
-                    <input type="text" class="form-control" name="image"
-                    value="<%= edit ? product.image : '' %>">
-                </label>
-            </p>
-            <p>
-                <label>Price
-                    <input type="number" step="any" class="form-control" name="price"
-                    value="<%= edit ? product.price : '' %>">
-                </label>
-            </p>
-            <p>
-                <label>Description
-                    <textarea cols="30" rows="10" class="form-control" name="description">
-                    <%= edit ? product.description : '' %>
-                    </textarea>
-                </label>
-            </p>
-            <p><button><%= edit ? 'Edit Product' : 'Add Product' %></button></p>
-        </form>
-        addProduct
+    <!-- --------------------------------------------------------- -->
+    <link rel="icon" href="img/logo.svg" type="svg+xml">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <base href="/" target="_blank"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- [ styles ] 
+    ==================================================== -->
+    <link rel="stylesheet" href="stylesheets/globals/global.css">
+    <link rel="stylesheet" href="stylesheets/globals/swiper-bundle.min.css">
+    <link rel="stylesheet" href="stylesheets/home/home.css">
+    <!-- [ scripts ] 
+    ==================================================== -->
+    <script src="js/globals/swiper-bundle.min.js"></script>
+    <script src="js/globals/global.js" defer></script>
+    <script src="js/home/home.js" defer></script>
+</head>
+<body>
+        
+    <%- include( "includes/appbar.ejs" ) %>
+    <!-- <page-header></page-header> -->
+
+    <main>        
+        <!-- [ highlights section ]
+        ========================================================= -->
+        <article class="highlights">
+            <header>
+                <title-pk title-pk="<%= pageTitle %>" color="var(--cp05)"></title-pk>
+            </header>
+            <form pk="card" method="POST" action="<%= edit ? '/products/edit' : '/products/add' %>">
+                <% if( edit ) { %>
+                    <input type="hidden" name="productId" value="<%= product.id %>">
+                <% } %>
+                <p>
+                    <label>
+                        <p>Título do produto</p>
+                        <input type="text" class="form-control" name="title"
+                        value="<%= edit ? product.title : '' %>">
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <p>Imagem de capa do card</p>
+                        <input type="text" class="form-control" name="cover"
+                        value="<%= edit ? product.cover : '' %>">
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <p>Imagem</p>
+                        <input type="text" class="form-control" name="image"
+                        value="<%= edit ? product.image : '' %>">
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <p>Imagem 01</p>
+                        <input type="text" class="form-control" name="image01"
+                        value="<%= edit ? product.image01 : '' %>">
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <p>Imagem 02</p>
+                        <input type="text" class="form-control" name="image02"
+                        value="<%= edit ? product.image02 : '' %>">
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <p>Imagem 03</p>
+                        <input type="text" class="form-control" name="image03"
+                        value="<%= edit ? product.image03 : '' %>">
+                    </label>
+                </p>
+                <section col="2">
+                    <fieldset>
+                        <legend>Preço</legend>
+                        <label>Reais
+                            <input type="number" step="any" class="form-control" name="price"
+                            value="<%= edit ? product.price : '' %>">
+                        </label><br>
+                        <label>Centavos
+                            <input type="number" step="any" class="form-control" name="cents"
+                            value="<%= edit ? product.cents : '' %>">
+                        </label><br>
+                        <label>Preço antigo
+                            <input type="number" step="any" class="form-control" name="oldPrice"
+                            value="<%= edit ? product.oldPrice : '' %>">
+                        </label>
+                    </fieldset>
+                    <p>
+                        <label>
+                            <p>Grupo do produto</p>
+                            <input type="text" class="form-control" name="group"
+                            value="<%= edit ? product.group : '' %>">
+                        </label>
+                    </p>
+                </section>
+                <p>
+                    <label>
+                        <p>Descrição do produto</p>
+                        <textarea cols="30" rows="5" class="form-control" name="description">
+                        <%= edit ? product.description : '' %>
+                        </textarea>
+                    </label>
+                </p>
+                <button>
+                    <button-pk name="<%= edit ? 'Salvar Alterações' : 'Cadastrar o Produto' %>" color="" width="50%"></button-pk>
+                </button>
+                <center-btn>
+                </center-btn>
+            </form>
+            
+        </article>
+        
     </main>
-  </body>
+addProduct
+        
+    <%- include( "includes/footer.ejs" ) %>
+    <!-- <page-footer></page-footer> -->
+    
+    
+    <script>
+        /* [ swiperjs ]
+            ============================================================== */
+        /*  https://swiperjs.com/get-started
+            https://www.jsdelivr.com/package/npm/swiper
+            https://swiperjs.com/demos
+        */
+        var swiper = new Swiper( "*[slider-heighlights]", {
+            slidesPerView: 4,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: "true",
+            fade: "true",
+            grabCursor: "true",
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        
+            breakpoints:{
+                0: { slidesPerView: 1, },
+                520: { slidesPerView: 2, },
+                830: { slidesPerView: 3, },
+                950: { slidesPerView: 3, },
+                1120: { slidesPerView: 4, },
+            },
+        } );
+
+        var swiper = new Swiper( "*[slider-0-1anos]", {
+            slidesPerView: 4,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: "true",
+            fade: "true",
+            grabCursor: "true",
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        
+            breakpoints:{
+                0: { slidesPerView: 1, },
+                520: { slidesPerView: 2, },
+                830: { slidesPerView: 3, },
+                950: { slidesPerView: 3, },
+                1120: { slidesPerView: 4, },
+            },
+        } );
+
+        var swiper = new Swiper( "*[slider-2-3anos]", {
+            slidesPerView: 4,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: "true",
+            fade: "true",
+            grabCursor: "true",
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        
+            breakpoints:{
+                0: { slidesPerView: 1, },
+                520: { slidesPerView: 2, },
+                830: { slidesPerView: 3, },
+                950: { slidesPerView: 3, },
+                1120: { slidesPerView: 4, },
+            },
+        } );
+    </script>
+</body>
 </html>

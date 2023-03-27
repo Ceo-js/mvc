@@ -15,11 +15,12 @@
             price: req.body.price,
             cents: req.body.cents,
             oldPrice: req.body.oldPrice,
-            description: req.body.description
+            description: req.body.description,
+            group: req.body.group
         };
         const product = {
             id: req.body.productId,
-            ref: x,
+            ref: req.body.ref,
             title: req.body.title,
             cover: req.body.cover,
             image: req.body.image,
@@ -29,5 +30,6 @@
             price: req.body.price,
             cents: req.body.cents,
             oldPrice: req.body.oldPrice,
-            description: req.body.description
+            description: req.body.description,
+            group: req.body.group
         };

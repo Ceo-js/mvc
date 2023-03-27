@@ -7,13 +7,13 @@ exports.ProductsController = [
     getAddProductPage = ( req, res ) => {
         const viewsData = {
             edit: false,
-            pageTitle: "Add Product"
+            pageTitle: "Cadastro de Produtos"
         };
         res.render( "addProduct", viewsData );
     },
     postAddProductPage = ( req, res ) => {
         console.log( req.body );
-        let x = Math.floor((Math.random() * 900) + 100);
+        let x = Math.floor( ( Math.random() * 900 ) + 100 );
         const product = {
             id: Date.now(),
             ref: `PK-${x}-2023`,
@@ -23,6 +23,7 @@ exports.ProductsController = [
             image01: req.body.image01,
             image02: req.body.image02,
             image03: req.body.image03,
+            group: req.body.group,
             price: req.body.price,
             cents: req.body.cents,
             oldPrice: req.body.oldPrice,
@@ -53,13 +54,28 @@ exports.ProductsController = [
         } );
     },
     postEditProductPage = ( req, res ) => {
-        // console.log( req.body );
+        console.log( req.body );
         const product = {
             id: req.body.productId,
             title: req.body.title,
             price: req.body.price,
             image: req.body.image,
             description: req.body.description
+
+
+            // id: Date.now(),
+            // ref: `PK-${x}-2023`,
+            // title: req.body.title,
+            // cover: req.body.cover,
+            // image: req.body.image,
+            // image01: req.body.image01,
+            // image02: req.body.image02,
+            // image03: req.body.image03,
+            // group: req.body.group,
+            // price: req.body.price,
+            // cents: req.body.cents,
+            // oldPrice: req.body.oldPrice,
+            // description: req.body.description
         };
         updateProductIdById( product, req.body.productId );
         res.redirect( "/products" );

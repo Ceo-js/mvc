@@ -8,6 +8,7 @@ const express = require('express'),
 
 /* GET home page. */
 router.get('/', getHomePage );
+router.get('/home', getPKHomePage );
 router.get('/guide', getGuidePage );
 router.get('/produto', getProdutoPageModel );
 router.get('/product/details/:productId', getProductDetailPage );

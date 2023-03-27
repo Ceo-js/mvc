@@ -49,7 +49,7 @@ exports.HomeController = [
             const viewsData = {
                 admin: false,
                 product,
-                pageTitle: product.title,
+                pageTitle: req.body.title,
             };
             res.render( "productDetails", viewsData );
         } );
@@ -65,5 +65,11 @@ exports.HomeController = [
             pageTitle: "Product Page Model"
         };
         res.render( "produto", viewsData );
+    },
+    getPKHomePage = ( req, res ,next ) => {
+        const viewsData = {
+            pageTitle: "Pikituchos Homepage"
+        };
+        res.render( "home", viewsData );
     },
 ];
