@@ -35,7 +35,7 @@
             <header>
                 <title-pk title-pk="<%= pageTitle %>" color="var(--cp05)"></title-pk>
             </header>
-            <form pk="card" method="POST" action="<%= edit ? '/products/edit' : '/products/add' %>">
+            <form pk="card" method="POST" action="<%= edit ? '/admin/edit-product' : '/admin/add-product' %>">
                 <% if( edit ) { %>
                     <input type="hidden" name="productId" value="<%= product.id %>">
                 <% } %>

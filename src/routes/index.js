@@ -8,10 +8,11 @@ const express = require('express'),
 
 /* GET home page. */
 router.get('/', getHomePage );
-router.get('/home', getPKHomePage );
+// router.get('/home', getPKHomePage );
 router.get('/guide', getGuidePage );
 router.get('/produto', getProdutoPageModel );
-router.get('/product/details/:productId', getProductDetailPage );
+// router.get('/product/details/:productId', getProductDetailPage );
+router.get('/admin/product-details/:productId', getProductDetailPage );
 router.post( "/cart", postCartPage );
 router.get( "/cart", getCartPage );
 router.post( "/cart/delete-item", deleteCartItem );

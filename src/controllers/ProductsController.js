@@ -30,7 +30,8 @@ exports.ProductsController = [
             description: req.body.description
         };
         saveProduct( product );
-        res.redirect( "/products" );
+        // res.redirect( "/products" );
+        res.redirect( "/admin" );
     },
     getAdminProductsPage = ( req, res ) => {
         fetchAllProducts( products => {
@@ -39,7 +40,8 @@ exports.ProductsController = [
                 pageTitle: "Admin Products",
                 products
             };
-            res.render( "product-list", viewsData );
+            // res.render( "product-list", viewsData );
+            res.render( "admin", viewsData );
         } );
     },
     getEditProductPage = ( req, res ) => {
@@ -78,12 +80,14 @@ exports.ProductsController = [
             // description: req.body.description
         };
         updateProductIdById( product, req.body.productId );
-        res.redirect( "/products" );
+        // res.redirect( "/products" );
+        res.redirect( "/admin" );
     },
     postDeleteProductPage = ( req, res ) => {
         // console.log( req.body );
         const productId = req.body.productId;
-        deleteProductById( productId, () => res.redirect( "/products" ) );
+        // deleteProductById( productId, () => res.redirect( "/products" ) );
+        deleteProductById( productId, () => res.redirect( "/admin" ) );
     },
 ];
 

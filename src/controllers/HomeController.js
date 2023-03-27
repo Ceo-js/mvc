@@ -41,6 +41,8 @@ exports.HomeController = [
                 pageTitle: "Home page - Products List"
             };
             res.render( 'index', viewsData );
+            console.clear();
+            console.log( req.body );
         } );
     },
     getProductDetailPage = ( req, res ) => {

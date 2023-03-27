@@ -12,10 +12,14 @@ const express = require('express'),
 // });
 
 router.get( "/", getAdminProductsPage );
-router.get( "/add", getAddProductPage );
-router.post( "/add", postAddProductPage );
-router.get( "/edit/:productId", getEditProductPage );
-router.post( "/edit", postEditProductPage );
+// router.get( "/add", getAddProductPage );
+// router.post( "/add", postAddProductPage );
+router.get( "/add-product", getAddProductPage );
+router.post( "/add-product", postAddProductPage );
+// router.get( "/edit/:productId", getEditProductPage );
+router.get( "/edit-product/:productId", getEditProductPage );
+// router.post( "/edit", postEditProductPage );
+router.post( "/edit-product", postEditProductPage );
 router.post( "/delete", postDeleteProductPage );
 
 module.exports = router;

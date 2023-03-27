@@ -25,16 +25,19 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'src/public')));
+app.use(express.static(path.join(__dirname, 'src/public')));
 // app.use( '/src', express.static( path.join( __dirname, 'public' ) ) );
 app.use( "/home", express.static( "src/public" ) );
 app.use( "/products", express.static( "src/public" ) );
 app.use( "/products/edit", express.static( "src/public" ) );
 app.use( "/produto", express.static( "src/public" ) );
 app.use( "/admin", express.static( "src/public" ) );
+app.use( "/admin/edit-product", express.static( "src/public" ) );
+app.use( "/admin/product-details", express.static( "src/public" ) );
 
 app.use('/', indexRoutes);
-app.use( "/products", adminRoutes );
+// app.use( "/products", adminRoutes );
+app.use( "/admin", adminRoutes );
 // app.use('/users', usersRoutes);
 
 /* app.use( homeRouter );
