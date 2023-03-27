@@ -60,4 +60,10 @@ exports.HomeController = [
         };
         res.render( "guide", viewsData );
     },
+    getProdutoPageModel = ( req, res, next ) => {
+        const viewsData = {
+            pageTitle: "Product Page Model"
+        };
+        res.render( "produto", viewsData );
+    },
 ];

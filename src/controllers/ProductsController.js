@@ -13,13 +13,20 @@ exports.ProductsController = [
     },
     postAddProductPage = ( req, res ) => {
         console.log( req.body );
-
+        let x = Math.floor((Math.random() * 900) + 100);
         const product = {
             id: Date.now(),
+            ref: `PK-${x}-2023`,
             title: req.body.title,
+            cover: req.body.cover,
             image: req.body.image,
+            image01: req.body.image01,
+            image02: req.body.image02,
+            image03: req.body.image03,
             price: req.body.price,
-            description: req.body.description,
+            cents: req.body.cents,
+            oldPrice: req.body.oldPrice,
+            description: req.body.description
         };
         saveProduct( product );
         res.redirect( "/" );
