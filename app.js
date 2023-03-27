@@ -3,27 +3,41 @@ const createError = require('http-errors'),
     path = require('path'),
     cookieParser = require('cookie-parser'),
     logger = require('morgan'),
-    rootDir = require( "./utils/path" );
+    rootDir = require( "./src/utils/path" );
 
-const indexRouter = require('./routes/index'),
-    usersRouter = require('./routes/users'),
-    adminRoutes = require( "./routes/admin" );
+const indexRoutes = require('./src/routes/index'),
+    // usersRoutes = require('./routes/users'),
+    adminRoutes = require( "./src/routes/admin" );
+
+/* const indexRouter = require( "./src/routes/indexRouter" );
+const usersRouter = require( "./src/routes/usersRouter" );
+const loginRouter = require( "./src/routes/loginRouter" );
+const checkoutRouter = require( "./src/routes/checkoutRouter" );
+const authRouter = require( "./src/routes/authRouter" ); */
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'src/public')));
 
-app.use('/', indexRouter);
+app.use('/', indexRoutes);
 app.use( "/products", adminRoutes );
-app.use('/users', usersRouter);
+// app.use('/users', usersRoutes);
+
+/* app.use( homeRouter );
+app.use( adminRouter );
+// app.use( indexRouter );
+app.use( usersRouter );
+app.use( loginRouter );
+app.use( checkoutRouter );
+app.use( authRouter ); */
 
 // catch 404 and forward to error handler
 /* app.use(function(req, res, next) {
